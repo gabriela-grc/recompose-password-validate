@@ -1,13 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { compose, withHandlers, withState } from 'recompose';
-import { Item } from "./Password.style"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { compose, withHandlers, withState } from 'recompose'
+import { Item } from './Password.style'
+import { PASSWORD_VALIDATE } from '../../configs/messages'
 
-const hasLowerCaseRule = /[a-z]{1,}/;
-const hasUpperCaseRule = /[A-Z]{1,}/;
-const hasSpecialCharacterRule = /[!-/?<>=:;@]{1,}/;
-const hasNumberRule = /[\d]{1,}/;
-const hasSixCharacterRule = /^(.){6,}$/;
+const {
+  HAS_SIX_CHARACTER,
+  HAS_NUMBER,
+  HAS_SPECIAL_CHARACTER,
+  HAS_LOWER_CASE,
+  HAS_UPPER_CASE
+} = PASSWORD_VALIDATE
+
+const hasLowerCaseRule = /[a-z]{1,}/
+const hasUpperCaseRule = /[A-Z]{1,}/
+const hasSpecialCharacterRule = /[!-/?<>=:;@]{1,}/
+const hasNumberRule = /[\d]{1,}/
+const hasSixCharacterRule = /^(.){6,}$/
 
 const enhance = compose(
     withState('hasLowerCase', 'setHasLowerCase', false),
@@ -41,7 +50,7 @@ const enhance = compose(
             setIsDisabled(hasLowerCase && hasUpperCase && hasSpecialCharacter && hasNumber && hasSixCharacter)
         }
     })
-);
+)
 
 const Components = enhance(({
     toggleColor,
@@ -67,15 +76,15 @@ const Components = enhance(({
                 Enviar
           </button>
             <ul>
-                <Item truth={hasSixCharacter}>Ter no mínimo 6 caracteres</Item>
-                <Item truth={hasNumber}>Pelo menos um número</Item>
-                <Item truth={hasSpecialCharacter}>Pelo menos um caracter especial</Item>
-                <Item truth={hasUpperCase}>Pelo uma letra maiúscula</Item>
-                <Item truth={hasLowerCase}>Pelo uma letra minuscula</Item>
+                <Item truth={hasSixCharacter}>{HAS_SIX_CHARACTER}</Item>
+                <Item truth={hasNumber}>{HAS_NUMBER}</Item>
+                <Item truth={hasSpecialCharacter}>{HAS_SPECIAL_CHARACTER}</Item>
+                <Item truth={hasLowerCase}>{HAS_LOWER_CASE}</Item>
+                <Item truth={hasUpperCase}>{HAS_UPPER_CASE}</Item>                
             </ul>
         </div>
     )
-);
+)
 
 function Password() {
     return (
@@ -83,10 +92,10 @@ function Password() {
             <h1>Password validate</h1>
             <Components />
         </div>
-    );
+    )
 }
 
-const rootElement = document.getElementById('root');
-ReactDOM.render(<Password />, rootElement);
+const rootElement = document.getElementById('root')
+ReactDOM.render(<Password />, rootElement)
 
-export default Password;
+export default Password
