@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./styles.css";
-import Password from "../src/password/password";
+import Password from "./components/password";
 
 function App() {
   return (
