@@ -3,32 +3,32 @@ import ReactDOM from 'react-dom';
 import { compose, withHandlers, withState } from 'recompose';
 import styled from 'styled-components';
 
-const containsLetterMin = /[a-z]{1,}/;
-const containsLetterMax = /[A-Z]{1,}/;
-const constaisSpecialCaracter = /[!-\/\?\<\>\=\:\;\@]{1,}/;
-const constainsNumber = /[\d]{1,}/;
-const constainsSixCaracters = /^(.){6,}$/;
+const hasLowerCaseRule = /[a-z]{1,}/;
+const hasUpperCaseRule = /[A-Z]{1,}/;
+const hasSpecialCharacterRule = /[!-/?<>=:;@]{1,}/;
+const hasNumberRule = /[\d]{1,}/;
+const hasSixCharacterRule = /^(.){6,}$/;
 
 const enhance = compose(
-  withState('min', 'setMin', false),
-  withState('max', 'setMax', false),
-  withState('specialCaracter', 'setSpecialCaracter', false),
-  withState('number', 'setNumber', false),
-  withState('sixCaracters', 'setSixCaracters', false),
+  withState('hasLowerCase', 'setHasLowerCase', false),
+  withState('hasUpperCase', 'setHasUpperCase', false),
+  withState('hasSpecialCharacter', 'setHasSpecialCharacter', false),
+  withState('hasNumber', 'setHasNumber', false),
+  withState('hasSixCharacter', 'setHasSixCharacter', false),
+  withState('isDisabled', 'setIsDisabled', false),
   withHandlers({
     toggleColor: ({
-      setTruth,
-      setMin,
-      setMax,
-      setSpecialCaracter,
-      setNumber,
-      setSixCaracters
+      setHasLowerCase,
+      setHasUpperCase,
+      setHasSpecialCharacter,
+      setHasNumber,
+      setHasSixCharacter
     }) => text => {
-      setMin(containsLetterMin.test(text));
-      setMax(containsLetterMax.test(text));
-      setSpecialCaracter(constaisSpecialCaracter.test(text));
-      setNumber(constainsNumber.test(text));
-      setSixCaracters(constainsSixCaracters.test(text));
+      setHasLowerCase(hasLowerCaseRule.test(text));
+      setHasUpperCase(hasUpperCaseRule.test(text));
+      setHasSpecialCharacter(hasSpecialCharacterRule.test(text));
+      setHasNumber(hasNumberRule.test(text));
+      setHasSixCharacter(hasSixCharacterRule.test(text));
     }
   })
 );
@@ -36,12 +36,12 @@ const enhance = compose(
 const Components = enhance(
   ({
     toggleColor,
-    min,
-    max,
-    specialCaracter,
-    number,
-    sixCaracters,
-    isDisabled
+    isDisabled,
+    hasSixCharacter,
+    hasNumber,
+    hasSpecialCharacter,
+    hasUpperCase,
+    hasLowerCase
   }) => (
       <div>
         <input
@@ -51,18 +51,15 @@ const Components = enhance(
         />
         <br />
         <br />
-        <button
-          type="submit"
-          disabled={!sixCaracters && !number && !specialCaracter && !max && !min}
-        >
+        <button type="submit" disabled={!isDisabled}>
           Enviar
       </button>
         <ul>
-          <Item truth={sixCaracters}>Ter no mínimo 6 caracteres</Item>
-          <Item truth={number}>Pelo menos um número</Item>
-          <Item truth={specialCaracter}>Pelo menos um caracter especial</Item>
-          <Item truth={max}>Pelo uma letra maiúscula</Item>
-          <Item truth={min}>Pelo uma letra minuscula</Item>
+          <Item truth={hasSixCharacter}>Ter no mínimo 6 caracteres</Item>
+          <Item truth={hasNumber}>Pelo menos um número</Item>
+          <Item truth={hasSpecialCharacter}>Pelo menos um caracter especial</Item>
+          <Item truth={hasUpperCase}>Pelo uma letra maiúscula</Item>
+          <Item truth={hasLowerCase}>Pelo uma letra minuscula</Item>
         </ul>
       </div>
     )
