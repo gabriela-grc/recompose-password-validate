@@ -5,11 +5,11 @@ import { Item } from './Password.style'
 import { PASSWORD_VALIDATE } from '../../configs/messages'
 
 const {
-  HAS_SIX_CHARACTER,
-  HAS_NUMBER,
-  HAS_SPECIAL_CHARACTER,
-  HAS_LOWER_CASE,
-  HAS_UPPER_CASE
+    HAS_SIX_CHARACTER,
+    HAS_NUMBER,
+    HAS_SPECIAL_CHARACTER,
+    HAS_LOWER_CASE,
+    HAS_UPPER_CASE
 } = PASSWORD_VALIDATE
 
 const hasLowerCaseRule = /[a-z]{1,}/
@@ -52,7 +52,7 @@ const enhance = compose(
     })
 )
 
-const Components = enhance(({
+const Password = enhance(({
     toggleColor,
     isDisabled,
     hasSixCharacter,
@@ -63,39 +63,20 @@ const Components = enhance(({
     toggleDisabled
 }) => (
         <div>
-            <input
-                type="password"
-                id="text"
-                onChange={e => toggleColor(e.target.value) || toggleDisabled()}
-            />
+            <h1>Password validate</h1>
+            <input type="password" id="text" onChange={e => toggleColor(e.target.value) || toggleDisabled()} />
             <br />
             <br />
-            <button
-                type="submit"
-                disabled={!isDisabled}>
-                Enviar
-          </button>
+            <button type="submit" disabled={!isDisabled}>Enviar</button>
             <ul>
                 <Item truth={hasSixCharacter}>{HAS_SIX_CHARACTER}</Item>
                 <Item truth={hasNumber}>{HAS_NUMBER}</Item>
                 <Item truth={hasSpecialCharacter}>{HAS_SPECIAL_CHARACTER}</Item>
                 <Item truth={hasLowerCase}>{HAS_LOWER_CASE}</Item>
-                <Item truth={hasUpperCase}>{HAS_UPPER_CASE}</Item>                
+                <Item truth={hasUpperCase}>{HAS_UPPER_CASE}</Item>
             </ul>
         </div>
     )
 )
-
-function Password() {
-    return (
-        <div className="App">
-            <h1>Password validate</h1>
-            <Components />
-        </div>
-    )
-}
-
-const rootElement = document.getElementById('root')
-ReactDOM.render(<Password />, rootElement)
 
 export default Password
