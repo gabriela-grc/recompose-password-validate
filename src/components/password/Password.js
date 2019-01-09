@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { compose, withHandlers, withState } from 'recompose';
-import styled from 'styled-components';
+import { Item } from "./Password.style"
 
 const hasLowerCaseRule = /[a-z]{1,}/;
 const hasUpperCaseRule = /[A-Z]{1,}/;
@@ -64,10 +64,6 @@ const Components = enhance(
       </div>
     )
 );
-
-const Item = styled.li`
-  ${props => props.truth && 'color: green;'};
-`;
 
 function Password() {
   return (
