@@ -43,29 +43,29 @@ const Components = enhance(
     sixCaracters,
     isDisabled
   }) => (
-    <div>
-      <input
-        type="password"
-        id="text"
-        onChange={e => toggleColor(e.target.value)}
-      />
-      <br />
-      <br />
-      <button
-        type="submit"
-        disabled={!sixCaracters && !number && !specialCaracter && !max && !min}
-      >
-        Enviar
+      <div>
+        <input
+          type="password"
+          id="text"
+          onChange={e => toggleColor(e.target.value)}
+        />
+        <br />
+        <br />
+        <button
+          type="submit"
+          disabled={!sixCaracters && !number && !specialCaracter && !max && !min}
+        >
+          Enviar
       </button>
-      <ul>
-        <Item truth={sixCaracters}>Ter no mínimo 6 caracteres</Item>
-        <Item truth={number}>Pelo menos um número</Item>
-        <Item truth={specialCaracter}>Pelo menos um caracter especial</Item>
-        <Item truth={max}>Pelo uma letra maiúscula</Item>
-        <Item truth={min}>Pelo uma letra minuscula</Item>
-      </ul>
-    </div>
-  )
+        <ul>
+          <Item truth={sixCaracters}>Ter no mínimo 6 caracteres</Item>
+          <Item truth={number}>Pelo menos um número</Item>
+          <Item truth={specialCaracter}>Pelo menos um caracter especial</Item>
+          <Item truth={max}>Pelo uma letra maiúscula</Item>
+          <Item truth={min}>Pelo uma letra minuscula</Item>
+        </ul>
+      </div>
+    )
 );
 
 const Item = styled.li`
@@ -75,7 +75,7 @@ const Item = styled.li`
 function Password() {
   return (
     <div className="App">
-      <h1>Password</h1>
+      <h1>Password validate</h1>
       <Components />
     </div>
   );
