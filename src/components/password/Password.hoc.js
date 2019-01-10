@@ -22,12 +22,11 @@ const enhance = compose(
       setHasSixCharacter,
       toggleDisabled
     }) => text => {
-      setHasLowerCase(hasLowerCaseRule.test(text));
-      setHasUpperCase(hasUpperCaseRule.test(text));
-      setHasSpecialCharacter(hasSpecialCharacterRule.test(text));
-      setHasNumber(hasNumberRule.test(text));
-      setHasSixCharacter(hasSixCharacterRule.test(text));
-      toggleDisabled()
+      setHasLowerCase(hasLowerCaseRule.test(text))
+      setHasUpperCase(hasUpperCaseRule.test(text))
+      setHasSpecialCharacter(hasSpecialCharacterRule.test(text))
+      setHasNumber(hasNumberRule.test(text))
+      setHasSixCharacter(hasSixCharacterRule.test(text))
     },
     toggleDisabled: ({
       hasLowerCase,
