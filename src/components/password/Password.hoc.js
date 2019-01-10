@@ -1,11 +1,10 @@
-import { compose, withHandlers, withState, withProps, setPropTypes } from 'recompose'
-import { bool } from 'prop-types'
+import { compose, withHandlers, withState } from 'recompose'
 
-const hasLowerCaseRule = /[a-z]{1,}/
-const hasUpperCaseRule = /[A-Z]{1,}/
-const hasSpecialCharacterRule = /[!-/?<>=:;@]{1,}/
+const hasLowerCaseRule = /[a-zà-û]{1,}/
+const hasUpperCaseRule = /[A-ZÀ-Û]{1,}/
+const hasSpecialCharacterRule = /[^a-zà-û0-9 ]{1,}/
 const hasNumberRule = /[\d]{1,}/
-const hasSixCharacterRule = /^(.){6,}$/
+const hasSixCharacterRule = /^.{6,}$/
 
 const enhance = compose(
   withState('hasLowerCase', 'setHasLowerCase', false),
