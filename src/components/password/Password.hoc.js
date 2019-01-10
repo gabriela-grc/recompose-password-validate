@@ -1,4 +1,5 @@
-import { compose, withHandlers, withState } from 'recompose'
+import { compose, withHandlers, withState, withProps, setPropTypes } from 'recompose'
+import { bool } from 'prop-types'
 
 const hasLowerCaseRule = /[a-z]{1,}/
 const hasUpperCaseRule = /[A-Z]{1,}/
