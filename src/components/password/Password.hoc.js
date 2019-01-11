@@ -21,7 +21,6 @@ const enhance = compose(
       setHasSpecialCharacter,
       setHasNumber,
       setHasSixCharacter,
-      toggleDisabled
     }) => text => {
       setHasLowerCase(validateHasLowerCase(text))
       setHasUpperCase(validateHasUpperCase(text))

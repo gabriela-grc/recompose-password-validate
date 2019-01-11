@@ -12,17 +12,17 @@ const {
 
 const Password = (({
 	toggleColor,
+	toggleDisabled,
 	isDisabled,
 	hasSixCharacter,
 	hasNumber,
 	hasSpecialCharacter,
-	hasUpperCase,
 	hasLowerCase,
-	toggleDisabled
+	hasUpperCase
 }) => (
 		<div>
 			<h1>Password validate</h1>
-			<input type="password" data-testid="text" onChange={e => toggleColor(e.target.value) || toggleDisabled()} />
+			<input type="password" data-testid="text" onChange={event => toggleColor(event.target.value) || toggleDisabled()} />
 			<br />
 			<br />
 			<button type="submit" data-testid="submit" disabled={!isDisabled}>Enviar</button>

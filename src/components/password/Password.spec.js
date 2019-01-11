@@ -18,7 +18,7 @@ describe('Password', () => {
   })
   it('should enabled submit', () => {
     const { getByTestId } = render(<Password toggleColor={() => { }} toggleDisabled={() => { }} />)
-    fireEvent.change(getByTestId('text'), { target: { value: 'ZAQ!2wsx' } })
+    fireEvent.change(getByTestId('text'), { target: { value: 'MJU&8ikl' } })
     expect(getByTestId('submit')).toHaveAttribute('disabled', '')
   })
 }) 
