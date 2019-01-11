@@ -1,3 +1,4 @@
 import Password from './Password'
+import enhance from './Password.hoc'
 
-export default Password
+export default enhance(Password)
