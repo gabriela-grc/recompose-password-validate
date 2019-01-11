@@ -22,10 +22,10 @@ const Password = (({
 }) => (
 		<div>
 			<h1>Password validate</h1>
-			<input type="password" data-testid="passwordtext" onChange={e => toggleColor(e.target.value) || toggleDisabled()} />
+			<input type="password" data-testid="text" onChange={e => toggleColor(e.target.value) || toggleDisabled()} />
 			<br />
 			<br />
-			<button type="submit" data-testid="passwordsubmit" disabled={!isDisabled}>Enviar</button>
+			<button type="submit" data-testid="submit" disabled={!isDisabled}>Enviar</button>
 			<ul>
 				<Item truth={hasSixCharacter}>{HAS_SIX_CHARACTER}</Item>
 				<Item truth={hasNumber}>{HAS_NUMBER}</Item>

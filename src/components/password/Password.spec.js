@@ -12,13 +12,13 @@ describe('Password', () => {
   })
   it('should disabled submit', () => {
     const { getByTestId } = render(<Password toggleColor={() => { }} toggleDisabled={() => { }} />)
-    fireEvent.change(getByTestId('passwordtext'), { target: { value: 'ZAQ!2wsx' } })
-    fireEvent.change(getByTestId('passwordtext'), { target: { value: 'ZAQ!2' } })
-    expect(getByTestId('passwordsubmit')).toHaveAttribute('disabled')
+    fireEvent.change(getByTestId('text'), { target: { value: 'ZAQ!2wsx' } })
+    fireEvent.change(getByTestId('text'), { target: { value: 'ZAQ!2' } })
+    expect(getByTestId('submit')).toHaveAttribute('disabled')
   })
   it('should enabled submit', () => {
     const { getByTestId } = render(<Password toggleColor={() => { }} toggleDisabled={() => { }} />)
-    fireEvent.change(getByTestId('passwordtext'), { target: { value: 'ZAQ!2wsx' } })
-    expect(getByTestId('passwordsubmit')).toHaveAttribute('disabled', "")
+    fireEvent.change(getByTestId('text'), { target: { value: 'ZAQ!2wsx' } })
+    expect(getByTestId('submit')).toHaveAttribute('disabled', '')
   })
 }) 
