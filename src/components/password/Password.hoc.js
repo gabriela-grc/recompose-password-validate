@@ -1,10 +1,11 @@
 import { compose, withHandlers, withState } from 'recompose'
-
-const hasLowerCaseRule = /[a-zà-û]{1,}/
-const hasUpperCaseRule = /[A-ZÀ-Û]{1,}/
-const hasSpecialCharacterRule = /[^a-zà-û0-9 ]{1,}/
-const hasNumberRule = /[\d]{1,}/
-const hasSixCharacterRule = /^.{6,}$/
+import {
+  validateHasLowerCase,
+  validateHasUpperCase,
+  validateHasNumber,
+  validateHasSpecialCharacter,
+  validateHasSixCharacter
+} from '../../utils/validatePassword'
 
 const enhance = compose(
   withState('hasLowerCase', 'setHasLowerCase', false),
@@ -22,11 +23,11 @@ const enhance = compose(
       setHasSixCharacter,
       toggleDisabled
     }) => text => {
-      setHasLowerCase(hasLowerCaseRule.test(text))
-      setHasUpperCase(hasUpperCaseRule.test(text))
-      setHasSpecialCharacter(hasSpecialCharacterRule.test(text))
-      setHasNumber(hasNumberRule.test(text))
-      setHasSixCharacter(hasSixCharacterRule.test(text))
+      setHasLowerCase(validateHasLowerCase(text))
+      setHasUpperCase(validateHasUpperCase(text))
+      setHasSpecialCharacter(validateHasSpecialCharacter(text))
+      setHasNumber(validateHasNumber(text))
+      setHasSixCharacter(validateHasSixCharacter(text))
     },
     toggleDisabled: ({
       hasLowerCase,
